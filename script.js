@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-    // DOM Elements - General 
+    // DOM Elements - General   
     const modeSelectionOverlay = document.getElementById('modeSelection');
     const standardModeBtn = document.getElementById('standardModeBtn');
     const meetingModeBtn = document.getElementById('meetingModeBtn');
