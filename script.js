@@ -139,6 +139,31 @@ document.addEventListener('DOMContentLoaded', function () {
     let stream = null;
     let capturedImageData = null;
 
+    // Theme handling
+    const themeToggleBtn = document.getElementById('theme-toggle-btn');
+    const icon = themeToggleBtn.querySelector('i');
+
+    // Set initial theme to dark
+    document.documentElement.setAttribute('data-theme', 'dark');
+    icon.className = 'fas fa-sun'; // Show sun icon in dark mode
+
+    // Theme toggle handler
+    themeToggleBtn.addEventListener('click', () => {
+        const currentTheme = document.documentElement.getAttribute('data-theme');
+        const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+
+        document.documentElement.setAttribute('data-theme', newTheme);
+        icon.className = newTheme === 'light' ? 'fas fa-moon' : 'fas fa-sun';
+
+        // Save theme preference
+        localStorage.setItem('theme', newTheme);
+    });
+
+    // Load saved theme preference
+    const savedTheme = localStorage.getItem('theme') || 'dark';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    icon.className = savedTheme === 'light' ? 'fas fa-moon' : 'fas fa-sun';
+
     // Initialize Puter cloud storage
     async function initPuterStorage() {
         if (!isInitialized && typeof puter !== 'undefined' && puter.fs) {
@@ -795,12 +820,12 @@ document.addEventListener('DOMContentLoaded', function () {
     function createImageItem(url, file) {
         const div = document.createElement('div');
         div.className = 'image-item';
-        
+
         const img = document.createElement('img');
         img.src = url;
         img.alt = file.name;
         img.onload = () => URL.revokeObjectURL(url);
-        
+
         const removeBtn = document.createElement('button');
         removeBtn.className = 'remove-image';
         removeBtn.innerHTML = '<i class="fas fa-times"></i>';
