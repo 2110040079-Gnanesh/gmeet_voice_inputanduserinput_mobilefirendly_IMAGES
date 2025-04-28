@@ -1,5 +1,6 @@
 /* General Styles */
 :root {
+    /* Dark theme (default) */
     --primary-color: #4a9eff;
     --primary-light: #6fb6ff;
     --primary-dark: #2b7cd9;
@@ -23,6 +24,46 @@
     --editor-line-numbers: #858585;
     --editor-selection: #264f78;
     --editor-cursor: #569cd6;
+}
+
+/* Light theme */
+[data-theme="light"] {
+    --primary-color: #2b7cd9;
+    --primary-light: #4a9eff;
+    --primary-dark: #1e5c9e;
+    --secondary-color: #5b6eae;
+    --secondary-light: #7289da;
+    --secondary-dark: #4a597f;
+    --text-light: #333333;
+    --text-dark: #4a4a4a;
+    --background-light: #f5f5f5;
+    --background-dark: #ffffff;
+    --panel-background: #ffffff;
+    --editor-bg: #ffffff;
+    --editor-text: #333333;
+    --editor-line-numbers: #999999;
+    --editor-selection: #add6ff;
+    --editor-cursor: #333333;
+}
+
+/* Remove old theme toggle styles since we're using square button style */
+#theme-toggle-btn.square-btn {
+    background-color: var(--secondary-color);
+    color: var(--text-light);
+}
+
+#theme-toggle-btn.square-btn:hover {
+    background-color: var(--secondary-light);
+    transform: scale(1.1);
+}
+
+#theme-toggle-btn.square-btn i {
+    font-size: 10px;
+    transition: transform 0.3s ease;
+}
+
+[data-theme="light"] #theme-toggle-btn.square-btn i {
+    transform: rotate(180deg);
 }
 
 /* Base styles */
